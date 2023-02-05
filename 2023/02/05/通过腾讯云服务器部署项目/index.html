@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <title>通过腾讯云服务器部署项目 | Fu Yuhao</title>
+  <meta name="google-site-verification" content="" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta itemprop="name" content="Fu Yuhao" />
+  <meta itemprop="description" content="Love for life and frontend tech." />
+  <meta itemprop="image" content="/images/logo.png" />
+  <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
+  <!-- keywords and description -->
+  
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <script src="//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"></script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  <div id="container">
+    <header>
+  <div class="site-title">
+    <a href="/">
+      Fu Yuhao
+    </a>
+  </div>
+  
+  <div class="site-subtitle">
+    Love for life and frontend tech.
+  </div>
+  
+  
+  <p class="links">
+    
+    <a target="_blank" rel="noopener" href="https://github.com/fuuuyuhao">
+      <img src="/images/links/github.png" alt="GitHub">
+    </a>
+    
+    <a target="_blank" rel="noopener" href="https://www.zhihu.com/">
+      <img src="/images/links/zhihu.png" alt="zhihu">
+    </a>
+    
+    <a target="_blank" rel="noopener" href="https://fuuuyuhao.github.io">
+      <img src="/images/links/link.png" alt="wangzhan">
+    </a>
+    
+  </p>
+  
+</header>
+    <div id="main">
+      <article class="post">
+  <h3 class="date">
+  <time datetime="2023-02-05T08:50:01.000Z">
+    Feb 5, 2023
+  </time>
+</h3>
+  <h1>通过腾讯云服务器部署项目</h1>
+  <p class="post-info">
+  
+  
+</p>
+  
+  
+  <article>
+    <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ssh root@ip地址</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">root 代表服务器默认账户</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">ip地址是公网ip地址</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">输入密码</span></span><br><span class="line">mac终端输入密码不显示内容，直接输入，完成后回车即可</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">升级centos</span></span><br><span class="line">yum -y update</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">升级gcc版本</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装 centos-release-scl</span></span><br><span class="line">yum install centos-release-scl</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装devtoolset-9包 对应gcc9.x.x</span></span><br><span class="line">yum install devtoolset-9</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">执行：</span></span><br><span class="line">echo &quot;source /opt/rh/devtoolset-9/enable&quot; &gt;&gt; /etc/profile</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装nodejs</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">先设置要安装的版本</span></span><br><span class="line">curl -sL https://rpm.nodesource.com/setup_14.x | bash -</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装</span></span><br><span class="line">yum install nodejs -y</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">完成后查看下node版本</span></span><br><span class="line">node -v</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">显示是v14.15.1，成功！</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装MongoDB</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">新建一个文件</span></span><br><span class="line">vim /etc/yum.repos.d/mongodb-org-4.2.repo</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">把一下内容粘贴在里面</span></span><br><span class="line">[mongodb-org-4.2]</span><br><span class="line">name=MongoDB Repository</span><br><span class="line">baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=1</span><br><span class="line">gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装mongodb</span></span><br><span class="line">sudo yum install -y mongodb-org</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">配置</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">开启安全验证</span></span><br><span class="line">security: </span><br><span class="line">	authorization: enabled</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">启动服务sudo</span> </span><br><span class="line">system start mongod</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">开机自启动设置</span></span><br><span class="line">sudo system enable mongod停止sudo system stop mongod</span><br></pre></td></tr></table></figure>
+
+
+
+<p>五、使用git上传代码安装yum install git在服务器上配置公钥cat ~&#x2F;.ssh&#x2F;id_rsa.pub查看并复制到gitee上面 然后clone就可以了后面更新可以push，pull六、安装pm2让nodejs永久运行全局安装pm2npm i pm2 -g运行项目pm2 start app.js停止项目pm2 stop app.jsapp.js是我的项目入口文件，如果你的不一样，以你自己的为准以上就是配置全过程，完成后就可以通过公网地址加端口号访问了</p>
+
+  </article>
+  
+  
+</article>
+
+
+    </div>
+  </div>
+  <footer>
+  <p>
+    Powered by <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>
+  </p>
+</footer>
+  
+  <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+  <script>
+    Waline({
+      el: '#waline',
+      placeholder: '',
+      avatar: 'retro',
+      visitor: true,
+      requiredFields: ['nick', 'mail'],
+      serverURL: '',
+      emoji: [
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili',
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/qq',
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/alus',
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/tw-emoji',
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo',
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/tieba',
+      ]
+    });
+  </script>
+</body>
+
+</html>
