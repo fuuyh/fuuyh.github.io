@@ -1,51 +1,128 @@
 // 设置一个常量 记录鼠标按下的状态
 let painting = false;
+// 记录一下 dock栏 的按钮类型
+let type;
+
+// 画板基础配置
 // 存储位置
-let startPoint = { x: undefined, y: undefined };
+let startPoint = {
+    x: undefined, 
+    y: undefined,
+    width: '600',
+    height: '450',
+    // 定义一个默认的线的颜色
+    lineColor: '#000',
+    // 定义一个默认的填充的颜色,默认无填充
+    lineBjColor: undefined,
+    // 线条粗细
+    // lineWidth: undefined
+};
 // 获取画布并设置2d
 const canvas = document.getElementById('canvas');
 //获得 2d 上下文对象
 const ctx = canvas.getContext('2d');
 // 先给canvas设置一个默认的高度和宽度
-canvas.width = '600'
-canvas.height = '450'
-// 设置鼠标按下实践，按下鼠标代表开始画画
-canvas.onmousedown = (e) => {
-    // 获取 x y 设置给开始位置
-    let x = e.offsetX;
-    let y = e.offsetY;
-    startPoint = { x, y };
-    // 更改状态 为true 表示 按下
-    painting = true
-};
-// 鼠标移动时 的 事件
-canvas.onmousemove = (e) => {
-    // 获取位置
-    let x = e.offsetX;
-    let y = e.offsetY;
-    // 把 x y 赋值给新的 位置
-    let newPoint = { x: x, y: y }
-    if (painting) {
+canvas.width = startPoint.width;
+canvas.height = startPoint.height;
+
+// 操作按钮设置
+// 点击按钮后记录一个全局的值
+const functionButton = document.getElementById('functionButton');
+functionButton.addEventListener('click', (e) => {
+    // 通过给元素设置的 data——type属性可以获取到点击的是什么按钮，在根据type去执行不同的方法
+    type = e.target.dataset.type;
+    switch (type) {
+        case 'straight-line':
+            // 直线
+            break;
+        case 'circular':
+            // 圆
+            break;
+        case 'oval':
+            // 椭圆
+            break;
+        case 'rectangle':
+            // 矩形
+            drawRectangle()
+            break;
+        case 'arrowhead':
+            // 箭头
+            break;
+        case 'mobile':
+            // 移动画像
+            break;      
+        case 'add-text':
+            // 添加文字
+            break; 
+        case 'eraser':
+            // 橡皮擦
+            break;
+        case 'pencil':
+            // 铅笔
+            break;
+        case 'crayon':
+            // 蜡笔
+            console.log('1')
+            break;
+        case 'moren-line':
+            // 默认
+            defaultLine()
+            break;
+        
+    }
+})
+
+
+// 这个是 默认的 跟随鼠标画线的方法
+
+function defaultLine() {
+    // // 设置鼠标按下实践，按下鼠标代表开始画画
+    canvas.onmousedown = (e) => {
+        // 默认就是 跟随鼠标画线
+        // 获取 x y 设置给开始位置
+        let x = e.offsetX;
+        let y = e.offsetY;
+        startPoint = { x, y};
+        // 更改状态 为true 表示 按下
+        painting = true
+    };
+    // 鼠标移动时 的 事件
+    canvas.onmousemove = (e) => {
+        // 获取位置
+        let x = e.offsetX;
+        let y = e.offsetY;
+        // 把 x y 赋值给新的 位置
+        let newPoint = { x: x, y: y }
+        // 如果painting 为false就直接返回
+        if (!painting) return
+        // 为true 就调用画画的方法
+        // 后面这里可以判断是 什么按钮，从而得知 用的是线段还是其他形状
+        // 设置一个常量用来判断按的是什么按钮，从而执行什么方法
         drawLine(startPoint.x, startPoint.y, newPoint.x, newPoint.y);
         startPoint = newPoint;
-    }
-};
+    };
 
-// 鼠标离开/抬起事件，表示话完了
-canvas.onmouseup = () => {
-    painting = false;
-};
+    // 鼠标离开/抬起事件，表示话完了
+    canvas.onmouseup = () => {
+        painting = false;
+    };
 
-// 封装 画线的 方法
-function drawLine(xStart, yStart, xEnd, yEnd) {
-    ctx.beginPath();
-    // 线宽
-    ctx.lineWidth = 3;
-    ctx.moveTo(xStart, yStart);
-    ctx.lineTo(xEnd, yEnd);
-    ctx.stroke()
-    ctx.closePath
-};
+    // 封装 画线的 方法
+    function drawLine(xStart, yStart, xEnd, yEnd) {
+        ctx.beginPath();
+        // 线宽，改颜色，颜色可以设置一个全局变量，分为线条颜色和填充颜色
+        ctx.lineWidth = 5;
+        ctx.moveTo(xStart, yStart);
+        ctx.lineTo(xEnd, yEnd);
+        ctx.stroke()
+        ctx.closePath
+    };
+}
+// 没有按钮的时候默认执行
+defaultLine()
+
+
+// 线段，矩形，圆形，椭圆， 添加文字， 箭头 ， 三角形
 
 // 清空方法
 // 获取清空按钮
@@ -97,58 +174,4 @@ buttonBox.addEventListener('click', (e) => {
     } else {
         return;
     }
-})
-
-// 线段，矩形，圆形，椭圆， 添加文字， 箭头
-// 点击画一个矩形
-// let width,height
-// const juxing = document.getElementById('juxing');
-// juxing.addEventListener('click', () => {
-//     // 监听鼠标按下的事件
-//     // canvas.addEventListener('mousedown', () => {
-
-//     // })
-//     // 添加mousemove和mouseup事件监听器，绘制矩形
-//     canvas.addEventListener("mousemove", onMouseMove);
-//     canvas.addEventListener("mouseup", onMouseUp);
-//     // 鼠标移动时绘制矩形
-//     function onMouseMove(e) {
-//         width = e.clientX - canvas.offsetLeft - startPoint.x;
-//         height = e.clientY - canvas.offsetTop - startPoint.y;
-  
-//         // 清空画布并绘制矩形
-//         ctx.clearRect(0, 0, canvas.width, canvas.height);
-//         ctx.fillRect(startPoint.x, startPoint.y, width, height);
-//       }
-  
-//       // 鼠标松开时停止绘制
-//     function onMouseUp() {
-//         canvas.removeEventListener("mousemove", onMouseMove);
-//         canvas.removeEventListener("mouseup", onMouseUp);
-//     }
-// })
-
-//   function drawCircle() {
-//     ctx.beginPath();
-//     ctx.arc(250, 250, 50, 0, 2 * Math.PI);
-//     ctx.stroke();
-//   }
-
-//   function drawEllipse() {
-//     ctx.beginPath();
-//     ctx.ellipse(250, 250, 100, 50, 0, 0, 2 * Math.PI);
-//     ctx.stroke();
-//   }
-
-//   function drawLine() {
-//     ctx.beginPath();
-//     ctx.moveTo(100, 100);
-//     ctx.lineTo(400, 400);
-//     ctx.stroke();
-//   }
-
-//   function drawRectangle() {
-//     ctx.beginPath();
-//     ctx.rect(100, 100, 300, 200);
-//     ctx.stroke();
-//   }
+});

@@ -77,3 +77,23 @@ footer {
     background: rgba(195, 207, 227, .5);
     backdrop-filter: blur(2px);
 }
+/*  */
+footer {
+    display: flex;
+}
+footer ul {
+    display: flex;
+}
+footer ul li {
+    margin: 0 10px;
+}
+/* footer div ul {
+    display: flex;
+    margin: 0 10px;
+}
+footer div ul li {
+    margin: 0 10px;
+} */
+ul li {
+    list-style: none;
+}
