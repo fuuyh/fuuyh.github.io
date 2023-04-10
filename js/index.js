@@ -13,7 +13,7 @@ let buttonLists = [
   {
     img: './images/case.svg',
     title: 'Case',
-    link: 'https://www.noovertime.cc/case/index.html'
+    link: 'https://www.noovertime.cc/some-case'
   },
   {
     img: './images/codepen.svg',
