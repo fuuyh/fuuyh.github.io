@@ -2,78 +2,118 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>about</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AboutME</title>
   <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/jq.js"></script>
+  <style>
+    html {
+      font-size: 10px;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: Avenir, Helvetica, Arial, sans-serif;
+      text-rendering: optimizelegibility;
+      background-image: linear-gradient( 135deg, #FFCF71 10%, #2376DD 100%);
+      min-height: 100vh;
+    }
+
+    img {
+      --s: 16rem;
+      /* image size */
+      --b: .3rem;
+      /* border thickness */
+      --c: #666666;
+      /* border color */
+      --f: 1;
+      /* initial scale */
+      --_g: 50% / calc(100% / var(--f)) 100% no-repeat content-box;
+      --_o: calc((1 / var(--f) - 1) * var(--s) / 2 - var(--b));
+
+      width: var(--s);
+      aspect-ratio: 1;
+      padding-top: calc(var(--s) / 5);
+      cursor: pointer;
+      border-radius: 0 0 999px 999px;
+
+      outline: var(--b) solid var(--c);
+      outline-offset: var(--_o);
+      background: radial-gradient(circle closest-side,
+      #c0b690 calc(99% - var(--b)),
+          var(--c) calc(100% - var(--b)) 99%,
+          #0000) var(--_g);
+      -webkit-mask: linear-gradient(#000 0 0) no-repeat 50% calc(1px - var(--_o)) / calc(100% / var(--f) - 2 * var(--b) - 2px) 50%,
+        radial-gradient(circle closest-side, #000 99%, #0000) var(--_g);
+      transform: scale(var(--f));
+      transition: 0.5s;
+    }
+
+    img:hover {
+      --f: 1.35;
+      /* hover scale */
+    }
+
+    main{
+      text-align: left;
+      color: #3b3a3a;
+      padding: 0 2rem;
+      max-width: 75rem;
+    }
+
+    main h1 {
+      font-size: 4.5em;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: .1rem
+    }
+
+    main p {
+      font-size: 1.6em;
+      font-weight: 300;
+      line-height: 2
+    }
+
+    main a {
+      text-decoration: none;
+      white-space: nowrap;
+      color: #121314;
+      position: relative
+    }
+
+    main a:after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 66%;
+      left: -.1em;
+      right: -.1em;
+      bottom: 0;
+      transition: top .2s cubic-bezier(0, .8, .13, 1);
+      background-color: rgba(79, 192, 141, .5)
+    }
+
+    main a:hover:after {
+      top: 0
+    }
+  </style>
 </head>
 
 <body>
-  <div class="wrapper">
-    <div class="sidebar" style="display: none;">
-      <div class="index_box">
-        <div class="index_txt">
-          <img src="images/touxiang.jpg" alt="touxiang">
-          <h1> Fu-Yh</h1>
-          <p>A half-baked programmer, a magic front-end developer</p>
-          <div class="zuobiao">
-            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-geo-alt" fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd"
-                d="M12.166 8.94C12.696 7.867 13 6.862 13 6A5 5 0 0 0 3 6c0 .862.305 1.867.834 2.94.524 1.062 1.234 2.12 1.96 3.07A31.481 31.481 0 0 0 8 14.58l.208-.22a31.493 31.493 0 0 0 1.998-2.35c.726-.95 1.436-2.008 1.96-3.07zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
-              <path fill-rule="evenodd" d="M8 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-            </svg>BeiJing · China
-          </div>
-          <div class="menu_item_box">
-            <ul class="index_nav">
-              <li>
-                <a href="index.html">Home</a>
-              </li>
-              <li>
-                <a href="about.html">About</a>
-              </li>
-              <li>
-                <a href="https://fuuyh.github.io/blog/">Blog</a>
-              </li>
-              <li>
-                <a href="case/index.html">Case</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <section class="right">
-      <div class="nav_ico">
-        <svg class="ham hamRotate ham1" viewBox="0 0 100 100" onclick="this.classList.toggle('active')">
-          <path class="line top"
-            d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40">
-          </path>
-          <path class="line middle" d="m 30,50 h 40"></path>
-          <path class="line bottom"
-            d="m 30,67 h 40 c 12.796276,0 15.357889,-11.717785 15.357889,-26.851538 0,-15.133752 -4.786586,-27.274118 -16.667516,-27.274118 -11.88093,0 -18.499247,6.994427 -18.435284,17.125656 l 0.252538,40">
-          </path>
-        </svg>
-      </div>
-      <div class="right_box">
-        <div class="single_info_box">
-          <h1 class="single_title">About</h1>
-        </div>
-        <div class="wznrys">
-          <ul class="about__box">
-            <li>Name：FuYh</li>
-            <li>Coordinate: Beijing</li>
-            <li>Github：fuuuyuhao</li>
-            <!-- <li>工作经历：待补充</li> -->
-          </ul>
-      </div>
-    </section>
+  <div>
+    <img src="./images/avatar.webp" />
   </div>
-  <script src="js/index.js"></script>
+  <main>
+    <h1>HELLO.</h1>
+    <p>My name is Fu Yuhao.</p>
+    <p>I am a half-baked programmer. addicted to high-end theory and becoming thinner. Occasionally, I will develop
+      several interesting programs to kill time, which are put on my <a href="https://github.com/fuuyh/">GitHub</a> . The project name is <a href="https://github.com/fuuyh/some-case">Some-Case</a> .</p>
+    <p>I'm learning English. Originally wanted to write a blog in English, but considering my limited skills, I had to
+      settle for the second best and build a blog in English.</p>
+    <p>I always believe that one day in the future, I can succeed.</p>
+  </main>
 </body>
 
 </html>

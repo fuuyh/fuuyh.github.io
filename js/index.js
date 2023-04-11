@@ -18,12 +18,12 @@ let buttonLists = [
   {
     img: './images/codepen.svg',
     title: 'Codepen',
-    link: 'https://github.com/mcmyth'
+    link: 'https://codepen.io/'
   },
   {
     img: './images/aboutme.svg',
     title: 'About',
-    link: 'https://github.com/about.html'
+    link: 'https://www.noovertime.cc/about.html'
   }
 ]
 

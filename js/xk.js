@@ -19,7 +19,7 @@
   let w = canvas.width = window.innerWidth;
   let h = canvas.height = window.innerHeight;
   let stars = []; // 星星数组
-  let maxNum = 800; //星星数量
+  let maxNum = 1200; //星星数量
 
   // 星星画布
   let starCanvas = document.createElement("canvas");
@@ -52,7 +52,7 @@
     // 轨道半径
     this.orbitRadius = randomF(maxOrbit(w, h));
     // 星星大小
-    this.radius = randomF(60, this.orbitRadius) / 12;
+    this.radius = randomF(60, this.orbitRadius) / 24;
     // 屏幕中心
     this.orbitX = w / 2;
     this.orbitY = h / 2;
@@ -93,7 +93,7 @@
   function update() {
     ctx.globalCompositeOperation = 'source-over';
     ctx.globalAlpha = 0.8;
-    ctx.fillStyle = '#05356c';
+    ctx.fillStyle = '#232c52';
     ctx.fillRect(0, 0, w, h);
     ctx.globalCompositeOperation = 'lighter';
     // 便利绘制星星
