@@ -8,12 +8,12 @@ let buttonLists = [
   {
     img: './images/blog.svg',
     title: 'Blog',
-    link: 'https://www.noovertime.cc/blog'
+    link: 'https://fuuyh.github.io/blog'
   },
   {
     img: './images/case.svg',
     title: 'Case',
-    link: 'https://www.noovertime.cc/some-case'
+    link: 'https://fuuyh.github.io/some-case'
   },
   {
     img: './images/codepen.svg',
@@ -23,7 +23,7 @@ let buttonLists = [
   {
     img: './images/aboutme.svg',
     title: 'About',
-    link: 'https://www.noovertime.cc/about.html'
+    link: 'https://fuuyh.github.io/about.html'
   }
 ]
 
