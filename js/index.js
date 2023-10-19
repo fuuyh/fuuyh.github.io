@@ -12,18 +12,13 @@ let buttonLists = [
   },
   {
     img: './images/case.svg',
-    title: 'Case',
+    title: 'About',
     link: 'https://fuuyh.github.io/some-case'
   },
   {
     img: './images/codepen.svg',
     title: 'Codepen',
     link: 'https://codepen.io/'
-  },
-  {
-    img: './images/aboutme.svg',
-    title: 'About',
-    link: 'https://fuuyh.github.io/about.html'
   }
 ]
 
