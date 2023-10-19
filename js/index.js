@@ -11,7 +11,7 @@ let buttonLists = [
     link: 'https://fuuyh.github.io/blog'
   },
   {
-    img: './images/case.svg',
+    img: './images/case.svg', 
     title: 'About',
     link: 'https://fuuyh.github.io/some-case'
   },
